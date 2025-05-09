@@ -1,33 +1,26 @@
 package org.example;
-
+import org.example.Employee;
+import org.example.Healthplan;
 import org.example.enums.Plan;
+import org.example.Company;
 
 public class Main {
     public static void main(String[] args) {
-        runProject();
+        run();
     }
 
-    public static void runProject() {
-        // Healthplan objesi
-        Healthplan hp1 = new Healthplan(1, "Sağlık Paketi A", Plan.BASIC);
-        System.out.println(hp1);
+    public static void run() {
+        Healthplan hp = new Healthplan(1, "Sigorta1", Plan.BASIC);
+        System.out.println(hp);
 
-        // Employee objesi
-        String[] plans = new String[2];
-        Employee emp1 = new Employee(101, "Ahmet Yılmaz", "ahmet@example.com", "pass123", plans);
-        emp1.addHealthplan(0, "BASIC");
-        emp1.addHealthplan(1, "VIP");
-        emp1.addHealthplan(2, "OUT"); // index out of bounds
-        emp1.addHealthplan(0, "PREMIUM"); // already occupied
-        System.out.println(emp1);
+        String[] healths = new String[2];
+        Employee emp = new Employee(1, "Alice Smith", "alice@test.com", "1234", healths);
+        emp.addHealthPlan(0, hp.getName());
+        System.out.println(emp);
 
-        // Company objesi
         String[] devs = new String[2];
-        Company com1 = new Company(501, "TechCorp", 500000.0, devs);
-        com1.addEmployee(0, "Mehmet Developer");
-        com1.addEmployee(1, "Ayşe Frontend");
-        com1.addEmployee(0, "Deniz UX"); // already occupied
-        com1.addEmployee(3, "Ali Backend"); // index out of bounds
-        System.out.println(com1);
+        Company comp = new Company(1, "Acme Corp", 5000, devs);
+        comp.addEmployee(0, emp.getFullName());
+        System.out.println(comp);
     }
 }

@@ -5,14 +5,14 @@ public class Employee {
     private String fullName;
     private String email;
     private String password;
-    private String[] healthplans;
+    private String[] healthPlans;
 
-    public Employee(int id, String fullName, String email, String password, String[] healthplans) {
+    public Employee(int id, String fullName, String email, String password, String[] healthPlans) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.password = password;
-        this.healthplans = healthplans;
+        this.healthPlans = healthPlans;
     }
 
     public int getId() {
@@ -47,38 +47,33 @@ public class Employee {
         this.password = password;
     }
 
-    public String[] getHealthplans() {
-        return healthplans;
+    public String[] getHealthPlans() {
+        return healthPlans;
     }
 
-    public void setHealthplans(String[] healthplans) {
-        this.healthplans = healthplans;
+    public void setHealthPlans(String[] healthPlans) {
+        this.healthPlans = healthPlans;
     }
 
-    public void addHealthplan(int index, String name) {
-        if (index < 0 || index >= healthplans.length) {
-            System.out.println("Index out of bounds!");
+    public void addHealthPlan(int index, String name) {
+        if (index < 0 || index >= healthPlans.length) {
+            System.out.println("Index out of bounds");
             return;
         }
-        if (healthplans[index] == null) {
-            healthplans[index] = name;
-            System.out.println("Healthplan added at index " + index);
-        } else {
-            System.out.println("Index already occupied!");
+        if (healthPlans[index] != null) {
+            System.out.println("Index already occupied");
+            return;
         }
+        healthPlans[index] = name;
     }
 
     @Override
     public String toString() {
-        StringBuilder plans = new StringBuilder();
-        for (String hp : healthplans) {
-            plans.append(hp).append(" ");
-        }
         return "Employee{" +
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
-                ", healthplans=" + plans +
+                ", healthPlans=" + java.util.Arrays.toString(healthPlans) +
                 '}';
     }
 }

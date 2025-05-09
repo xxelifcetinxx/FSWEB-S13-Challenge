@@ -35,10 +35,9 @@ public class Company {
 
     public void setGiro(double giro) {
         if (giro < 0) {
-            this.giro = 0;
-        } else {
-            this.giro = giro;
+            throw new IllegalArgumentException("Giro cannot be negative");
         }
+        this.giro = giro;
     }
 
     public String[] getDeveloperNames() {
@@ -51,28 +50,23 @@ public class Company {
 
     public void addEmployee(int index, String name) {
         if (index < 0 || index >= developerNames.length) {
-            System.out.println("Index out of bounds!");
+            System.out.println("Index out of bounds");
             return;
         }
-        if (developerNames[index] == null) {
-            developerNames[index] = name;
-            System.out.println("Developer added at index " + index);
-        } else {
-            System.out.println("Index already occupied!");
+        if (developerNames[index] != null) {
+            System.out.println("Index already occupied");
+            return;
         }
+        developerNames[index] = name;
     }
 
     @Override
     public String toString() {
-        StringBuilder devs = new StringBuilder();
-        for (String dev : developerNames) {
-            devs.append(dev).append(" ");
-        }
         return "Company{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", giro=" + giro +
-                ", developerNames=" + devs +
+                ", developerNames=" + java.util.Arrays.toString(developerNames) +
                 '}';
     }
 }

@@ -1,14 +1,14 @@
 package org.example.enums;
 
 public enum Plan {
-    BASIC("Basic Plan", 99.99),
-    PREMIUM("Premium Plan", 199.99),
-    VIP("VIP Plan", 299.99);
+    BASIC("Basic Plan", 100),
+    PREMIUM("Premium Plan", 200),
+    DELUXE("Deluxe Plan", 300);
 
     private final String name;
-    private final double price;
+    private final int price;
 
-    Plan(String name, double price) {
+    Plan(String name, int price) {
         this.name = name;
         this.price = price;
     }
@@ -17,7 +17,7 @@ public enum Plan {
         return name;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 }
